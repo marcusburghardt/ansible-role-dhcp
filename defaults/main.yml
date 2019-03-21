@@ -1,0 +1,6 @@
+---
+# defaults file for ansile-role-dhcp
+
+dhcp_package: dhcp
+dhcp_service: dhcpd
+dhcp_conf: /etc/dhcp/dhcpd.conf

@@ -1,0 +1,6 @@
+# General Linux. Use this child group to centralize the connections configurations, set in group_vars/linux.yml
+[linux:children]
+dhcp-server
+
+[dhcp-server]
+mydhcpserver.domain.com

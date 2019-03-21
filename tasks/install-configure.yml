@@ -1,0 +1,29 @@
+---
+- name: mbsec-dhcp | Ensure the DHCP package is installed
+  package:
+    name: "{{ dhcp_package }}"
+    state: present
+
+- name: mbsec-dhcp | Create the config file based on standard settings
+  template:
+    src: dhcpd.conf.j2
+    dest: "{{ dhcp_conf }}"
+
+- name: mbsec-dhcp | Obtaining information about an existing valid backup file
+  stat:
+    path: "{{ dhcp_conf }}_bkp_{{ ansible_facts['date_time']['date'] }}"
+  register: result_pre_bkp_file
+
+- name: mbsec-dhcp | Backup of the existing config file
+  copy:
+    remote_src: yes
+    src: '{{ dhcp_conf }}'
+    dest: "{{ dhcp_conf }}_bkp_{{ ansible_facts['date_time']['date'] }}"
+  when: result_pre_bkp_file.stat.exists
+
+- name: mbsec-dhcp | Restart and enable the service
+  service:
+    name: "{{ dhcp_service }}"
+    state: restarted
+    enabled: yes
+...

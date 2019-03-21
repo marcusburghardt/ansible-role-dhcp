@@ -1,0 +1,18 @@
+galaxy_info:
+  author: Marcus Burghardt
+  description: Role for install and configure a DHCP Server for many branch offices.
+  company: MBSEC
+  license: MIT
+  min_ansible_version: 2.4
+  min_ansible_container_version: 2.4
+  platforms:
+    - name: EL
+      versions:
+        - 7
+  galaxy_tags:
+    - system
+    - dhcp
+    - linux
+    - instrastructure
+    - mbsec
+dependencies: []
