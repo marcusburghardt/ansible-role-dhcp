@@ -3,5 +3,5 @@
 - name: mbsec-dhcpd | Install and Configure
   include_tasks: install-configure.yml
   # DHCP is a critical infrastructure component. So, I put a double validation here. Thanks! : )
-  when: inventory_hostname in groups['dhcp-server']
+  when: inventory_hostname in groups['dhcp-servers']
 ...
